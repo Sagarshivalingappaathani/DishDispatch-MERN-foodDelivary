@@ -1,0 +1,6 @@
+
+| Feature         |             Session           |       Cookie    |
+|-----------------|-------------------------------|-----------------|
+| Storage location|              Server           | User's computer |
+| Security        |       More secure             |  Less secure    |
+| Expiration      | Expire after a period of inactivity | Can be stored for a longer period of time |
