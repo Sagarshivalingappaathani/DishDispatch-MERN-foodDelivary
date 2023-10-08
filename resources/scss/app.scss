@@ -28,19 +28,190 @@ body {
     height: 4rem;
   }
 
-nav li:last-child a {
-    background: $primary;
-    &:hover {
-        background: $primary-hover;
-    }
+
+
+//navbar
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  background:$dark;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  box-shadow: $gray;
+  z-index: 1000;
 }
 
-nav li a {
-    transition: $smooth;
-    &:hover {
-        color: $primary;
-    }
+.logo {
+  font-size: 3.6rem;
+  font-weight: 700;
 }
+
+.navbar li {
+  font-weight: 500;
+  transition: $transition;
+  padding: 1rem;
+  border-bottom: 2px solid transparent;
+}
+
+.navbar li:not(:last-child) {
+  margin-right: 1rem;
+}
+
+.navbar li:hover {
+  color:$primary;
+  border-color: $primary;
+}
+
+.btnn {
+  display: flex;
+  color: $primary;
+  background-color: $pure;
+  padding: 1rem;
+  border-radius: 0.5rem;
+  transition: $transition;
+}
+
+.btn:hover {
+  box-shadow: $secondary;
+}
+
+.header .hamburger img {
+  width: 3rem;
+}
+
+.header .hamburger {
+  display: none;
+}
+
+@media (max-width: 996px) {
+  .logo {
+    font-size: 3rem;
+  }
+
+  .navbar li {
+    padding: 0.5rem;
+  }
+
+  .navbar li:not(:last-child) {
+    margin-right: 0.5rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .header .navbar {
+    position: fixed;
+    /* top: 9rem; */
+    left: 0;
+    right: 0;
+    width: 90%;
+    padding: 2.5rem;
+    margin: 0 auto;
+    box-shadow: $gray;
+    background-color:$dark;
+    text-align: center;
+    border-radius: 1.5rem;
+    display: flex;
+    flex-direction: row;
+    transition: 0.4s;
+    top: -100%;
+  }
+
+  .header .hamburger {
+    display: block;
+  }
+
+  .navbar.show {
+    top: 9rem;
+  }
+}
+
+//footer styles
+.footer .top {
+    background-color: $dark;
+    padding: 5rem 9%;
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+  }
+  
+  .footer .top .links {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 3rem;
+  }
+  
+  .footer .top .content p {
+    color:$gray;
+    margin-top: 2rem;
+    width: 90%;
+  }
+  
+  .footer .top .link h4 {
+    font-size: 1.2rem;
+    margin-bottom: 1.5rem;
+    color:$gray;
+  }
+  
+  .footer .top .link a {
+    display: inline-block;
+    color: $gray;
+    margin-bottom: 1rem;
+  }
+  
+  .footer .top .link span {
+    color: $gray;
+  }
+  
+  .footer .top .link a {
+    display: block;
+  }
+  
+  .footer .top .link div {
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+  }
+  
+  .footer .top .link div img {
+    margin-right: 1rem;
+  }
+
+// media quarie for the footer
+@media (max-width: 996px) {
+    .footer .top {
+      padding: 5rem 9%;
+      grid-template-columns: 1fr;
+    }
+  
+    .footer .top .content {
+      display: none;
+    }
+  }
+  
+  @media (max-width: 768px) {
+    .footer .top .links {
+      grid-template-columns: 1fr;
+      gap: 3rem 0;
+    }
+  
+    .footer .top .link {
+      display: flex;
+      flex-direction: column;
+    }
+  
+    .footer .bottom {
+      padding: 1.5rem;
+    }
+  }
+  
+
+
+//hero section 
+
+
+
 section.hero {
     background: $secondary;
 }
@@ -206,115 +377,254 @@ a.link {
     background-attachment: fixed; /* Optional: Use 'fixed' for a fixed background */
     background-position: center;
 }
-  
 
-section.status {
-    background: $secondary;
-    min-height: calc(100vh - 86px);
-}
-.status-box {
-    padding: 60px 0 0;
-}
-.status-box ul {
-    margin-left: 84px;
-}
-.status-box ul li span {
-    position: relative;
-    padding-left: 20px;
-}
-// Dots
-.status-box ul li span:after {
-    content: '';
-    position: absolute;
-    left: -10px;
-    top:50%;
-    background: $dark;
-    width: 10px;
-    height: 10px;
-    border-radius: 50%;
-    transform: translateY(-50%);
-    box-shadow:0 0 1px 10px $secondary;
+//features
+section.services {
+  background-color: $lightGreen;
+  padding: 5rem 9%;
 }
 
-// Icons
-.status-box ul li span:before{
-    font-family: "Line Awesome Free";
-    font-size: 46px;
-    font-weight: 600;
-    position: absolute;
-    left: -90px;
-    top: 50%;
-    transform: translateY(-50%);
-    color: inherit;
-}
-.status-box ul li:nth-child(1) span:before {
-    content: '\f46c';
+.green{
+  color:#4CAF50 !important ;
 }
 
-.status-box ul li:nth-child(2) span:before {
-    content: '\f560';
+.services .top {
+  text-align: center;
+  margin-bottom: 5rem;
 }
 
-.status-box ul li:nth-child(3) span:before {
-    content: '\f818';
+.services .top h2 {
+  font-size: 4rem;
+  margin-bottom: 1.5rem;
 }
 
-.status-box ul li:nth-child(4) span:before {
-    content: '\f0d1';
+.services .top p {
+  width: 80%;
+  margin: 0 auto;
+  font-size: 1.8rem;
+  color: $dark;
 }
 
-.status-box ul li:nth-child(5) span:before {
-    content: '\f582';
-}
-.status-box ul li {
-    position: relative;
-}
-// Line
-.status-box ul li:before {
-   content: '';
-   position: absolute;
-   top: 0;
-   left: -6px;
-   width: 2px;
-   height: 100%;
-   background: $dark;
-   margin-top: 10px;
-}
-// Last dot
-.status-box ul li:nth-child(5) span:after {
-    box-shadow:0 20px 1px 20px $secondary;
+.services .bottom {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(30rem, 1fr));
+  gap: 3rem;
 }
 
-// line
-.status-box ul li.step-completed:before {
-    background: $gray;
+.services .bottom .box {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 3rem 2rem;
+  border-radius: 0.5rem;
+  transition: transform 0.3s, box-shadow 0.3s;
 }
 
-// dots
-.status-box ul li.step-completed span:after {
-    background: $gray;
+.services .bottom .box:hover {
+  transform: translate(0, -10px); /* Move the card up on hover */
+  box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.2); /* Add a shadow on hover */
+  background-color: $secondary;
 }
 
-// text
-.status-box ul li.step-completed span {
-    color: $gray;
+.services .bottom .box img {
+  height: 6rem;
 }
 
-// Current status
-.status-box ul li.current span {
-    color: $primary;
+.services .bottom .box h4 {
+  font-size: 2.4rem;
+  margin: 1.5rem 0;
 }
 
-.status-box ul li.current span:after {
-    background: $primary;
+.services .bottom .box h2 {
+  color: $dark;
+  margin-bottom: 1.5rem;
 }
 
-.status-box ul li small {
-    float: right;
-    font-size: 14px;
-    margin-top: 8px;
+.services .bottom .box a {
+  display: inline-block;
+  font-weight: 500;
+}
+
+.services .bottom .box a img {
+  height: 1rem;
 }
 
 
+@media (max-width: 768px) {
+  .services .top {
+    margin-bottom: 3rem;
+  }
 
-  
+  .services .top p {
+    width: 100%;
+    font-size: inherit;
+  }
+
+  .services .top h2 {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+  }
+
+  .services .bottom .box {
+    padding: 1.5rem;
+  }
+}
+
+
+//menu card details
+.pizza-card {
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+    box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.2);
+    border-radius: 10px; /* Rounded corners */
+    margin: 20px; /* Margin for the cards */
+}
+
+.pizza-card:hover {
+    transform: scale(1.05);
+    box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.3);
+}
+
+/* Hover effect for the image */
+.pizza-card img:hover {
+    transform: scale(1.1); /* Increase the size by 10% on hover */
+}
+
+//reviews section
+.testimonial-container {
+  display: flex;
+  justify-content: space-between;
+  background-color: white;
+  padding: 20px; /* Add padding for spacing */
+  box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.2); /* Add a shadow */
+}
+
+.testimonial-section {
+  flex: 1;
+  padding: 20px; /* Add padding for spacing */
+  background-color: white;
+  border: 1px solid #e5e5e5; /* Add a border */
+  border-radius: 8px; /* Add rounded corners */
+  margin-right: 20px; /* Add margin between sections */
+  position: relative; /* Add relative positioning */
+}
+
+/* Add green color decoration */
+.testimonial-section::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 10px;
+  height: 100%;
+  background-color: #00FF00; /* Green color */
+  border-top-left-radius: 8px; /* Match the border radius of the section */
+  border-bottom-left-radius: 8px; /* Match the border radius of the section */
+}
+
+/* Media query for smaller screens */
+@media screen and (max-width: 768px) {
+  .testimonial-container {
+      flex-direction: column; /* Stack sections vertically on smaller screens */
+      align-items: center; /* Center sections horizontally */
+  }
+  .testimonial-section {
+      margin-bottom: 20px; /* Add margin between sections in vertical layout */
+  }
+}
+
+//status tracker page
+.step-completed{
+  background-color:$primary;
+}
+.current{
+  background-color:$primary;
+}
+
+@media (min-width: 1025px) {
+  .h-custom {
+  height: 100vh !important;
+  }
+}
+
+.horizontal-timeline .items {
+border-top: 2px solid #ddd;
+}
+
+.horizontal-timeline .items .items-list {
+position: relative;
+margin-right: 2;
+}
+
+.horizontal-timeline .items .items-list:before {
+content: "";
+position: absolute;
+height: 8px;
+width: 8px;
+border-radius: 50%;
+background-color: #ddd;
+top: 0;
+margin-top: -5px;
+}
+
+.horizontal-timeline .items .items-list {
+padding-top: 15px;
+}
+
+//scrol button 
+.scroll-top {
+  position: fixed;
+  bottom: 10%;
+  right: 3%;
+  background-color: $organge;
+  padding: 0.8rem;
+  border-radius: 1rem;
+  box-shadow: $gray;
+  animation: grow 1s linear infinite alternate;
+  cursor: pointer;
+  display: none;
+}
+
+.scroll-top img {
+  width: 2.5rem;
+  height: 1.5rem;
+}
+
+@keyframes grow {
+  0% {
+    transform: scale(0.8);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.scroll-top.show {
+  display: block;
+}
+//media quarey for cart page
+
+@media (max-width: 768px) {
+  .order {
+    flex-direction: column;
+  }
+
+  .ml-0 {
+    margin-top: 20px; 
+  }
+}
+
+
+
+//order history
+.card-3d {
+  max-width: 540px;
+  transform: translateZ(0);
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+
+.card-3d:hover {
+  transform: translateZ(10px);
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.3);
+}

@@ -1,0 +1,72 @@
+<section class="orders light-section mt-20">
+    <div class="container mx-auto pt-12">
+      <h1 class="font-bold text-lg mb-4" style="text-align: center;"><strong>Completed Order History</strong></h1>
+      <% orders.forEach((order) => { %>
+        <div class="card mb-3 mx-auto card-3d" style="max-width: 700px;">
+          <div class="row g-0">
+            <div class="col-md-5">
+                <div class="card-body">
+                    <div class="flex justify-between">
+                        <h5 class="card-title text-orange-900 text-bold">User Details</h5>
+                    </div>
+                    <p class="card-text">
+                      <strong>customerId:</strong>
+                      <div><%= order.customerId._id %></div>
+                    </p>
+                    <p class="card-text">
+                        <strong>Name</strong> 
+                        <div><%= order.customerId.name %></div>
+                      </p>
+                    <p class="card-text">
+                      <strong>Mail</strong> 
+                      <div><%= order.customerId.email %></div>
+                    </p>
+                    <p class="card-text">
+                        <strong>Phone Number</strong> 
+                        <div><%= order.phone %></div>
+                    </p>
+                  </div>
+            </div>
+            <div class="col-md-7">
+              <div class="card-body">
+                <div class="flex justify-between">
+                    <h5 class="card-title text-orange-900 text-bold">Order Details</h5>
+                        <button type="button" class="btn btn-success">completed</button>
+                </div>
+                <p class="card-text">
+                  <strong>Items:</strong>
+                  <ul>
+                    <% Object.values(order.items).forEach((item) => { %>
+                    <div class="flex justify-between">
+                            <li><%= item.item.name %></li>
+                            <li><%= item.item.price %></li>
+                    </div>
+                    <% }) %>
+                  </ul>
+                </p>
+                <p class="card-text mt-4">
+                    <ul>
+                      <div class="flex justify-between">
+                              <li><strong>totalPrice</strong></li>
+                              <li><%= order.price %></li>
+                      </div>
+                    </ul>
+                  </p>
+                <p class="card-text">
+                    <strong>paymentType</strong> <%= order.paymentType %>
+                </p>
+                <p class="card-text">
+                  <strong>Address:</strong> <%= order.address %>
+                </p>
+                <p class="card-text">
+                  <small class="text-body-secondary"><strong>Last updated:</strong> <%= order.updatedAt %></small>
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      <% }) %>
+    </div>
+  </section>
+
+  

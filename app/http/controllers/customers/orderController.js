@@ -11,6 +11,7 @@ function orderController () {
             const order = new Order({
                 customerId: req.user._id,
                 items: req.session.cart.items,
+                price: req.session.cart.totalPrice,
                 phone,
                 address,
             });

@@ -1,17 +1,47 @@
-<div class="container mx-auto flex items-center justify-content-center mt-10">
-    <div class="w-full md:w-64">
-        <img class="h-40 mb-4 mx-auto" src="/img/<%= pizzaDetails.image %>" alt="">
-        <div class="text-center">
-            <h2 class="mb-4 text-lg"><%= pizzaDetails.name %></h2>
-            <span class="size py-1 px-4 rounded-full uppercase text-xs"><%= pizzaDetails.size %></span>
+<section class="flex justify-center mt-20">
+    <div class="w-full md:w-64 pizza-card">
+        <img class="h-40 mt-4 mb-4 mx-auto transition-transform duration-300 transform scale-100 hover:scale-110" src="/img/<%= pizzaDetails.image %>" alt="">
+        <div class="text-center p-4 rounded-lg border border-gray-300">
+            <h2 class="mb-2 text-lg"><%= pizzaDetails.name %></h2>
+            <div class="my-2">
+            <span class="size py-1 px-4 rounded-full text-xs bg-white-500 text-orange-700">25% OFF</span>
+            </div>                  
+            <div>
+            <button class="bg-green-500 rounded-l border text-white hover:bg-green-600 active:bg-green-700 disabled:opacity-50 inline-flex items-center px-2 py-1 border-r border-green-600 decreaseButton">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 12H4" />
+                </svg>
+            </button>
+            <div class="bg-gray-100 border-t border-b border-gray-100 text-gray-600 hover:bg-gray-100 inline-flex items-center px-3 py-1 select-none numberDisplay">
+                1
+            </div>
+            <button class="bg-green-500 rounded-r border text-white hover:bg-green-600 active:bg-green-700 disabled:opacity-50 inline-flex items-center px-2 py-1 border-r border-green-600 increaseButton">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4" />
+                </svg>
+            </button>
+            </div>
             <div class="flex items-center justify-around mt-6">
                 <span class="font-bold text-lg">₹<%= pizzaDetails.price %></span>
                 <button data-pizza="<%= JSON.stringify(pizzaDetails) %>"
-                    class="add-to-cart py-1 px-6 rounded-full flex items-center font-bold">
-                    <span>+</span>
-                    <span class="ml-4">Add</span>
+                class="add-to-cart py-1 px-2 rounded-full flex items-center font-bold">
+                add to cart
+                <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    class="h-6 w-6 ml-2"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                >
+                    <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"
+                    />
+                </svg>
                 </button>
             </div>
         </div>
-    </div>  
-</div>
+    </div>
+</section>  

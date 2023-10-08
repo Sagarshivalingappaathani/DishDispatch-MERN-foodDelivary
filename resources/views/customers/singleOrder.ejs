@@ -1,22 +1,82 @@
-<section class="status">
-    <div class="container mx-auto">
-        <div class="status-box w-full lg:w-2/3 mx-auto">
-            <div class="flex items-center justify-between mb-12">
-                <h1 class="text-xl font-bold">Track delivery status</h1>
-                <h6 class="bg-white py-1 rounded-full px-4 text-green-600 text-xs"><%=
-                    order._id %></h6>
-                <input id="hiddenInput" type="hidden" value="<%= JSON.stringify(order) %>">
+<section class="h-100 h-custom mt-20" style="background-color: hwb(0 93% 7%);">
+    <div class="container py-5 h-100">
+      <div class="row d-flex justify-content-center align-items-center h-100">
+        <div class="col-lg-8 col-xl-6">
+          <div class="card border-top border-bottom border-3" style="border-color: #f4a149 !important;">
+            <div class="card-body px-5">
+  
+              <p class="lead fw-bold mb-5" style="color: #d97e06;">Purchase Reciept</p>
+  
+              <div class="row">
+                <div class="col mb-3">
+                  <p class="small text-muted mb-1">Date and Time</p>
+                  <p><%= order.createdAt %></p>
+                </div>
+                <div class="col mb-3">
+                  <p class="small text-muted mb-1">Order No.</p>
+                  <p><%= order._id %></p>
+                </div>
+              </div>
+              <input id="hiddenInput" type="hidden" value="<%= JSON.stringify(order) %>">
+              <div class="mx-n5 px-5 py-4" style="background-color: #fff7f7;">
+                <div class="row">
+                  <div>
+                    <p style="color: #d97e06;">
+                      Order Summary
+                    </p>
+                  </div>
+                  <div class="col-md-8 col-lg-9 mt-4">
+                    <% for (const itemId in order.items) { %>
+                        <% const itemData = order.items[itemId]; %>
+                        <li class="flex justify-content-between">
+                          <p><%= itemData.item.name %></p>
+                          <p class="ml-20"><%= itemData.qty %> Pcs</p>
+                          <p class="ml-20"><%= itemData.item.price%></p>
+                        </li>
+                      <% } %>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-8 col-lg-9 flex mt-10">
+                    <p class="mb-0 mr-20" style="color: #d97e06;">Status</p>
+                    <p class="mb-0" style="color: #44a318;"><%= order.status %></p>
+                  </div>
+              </div>
+
+              <p class="lead fw-bold my-4 pb-2" style="color: #d98207;">Tracking Order</p>
+  
+              <div class="row">
+                <div class="col-lg-12">
+  
+                  <div class="horizontal-timeline status-box">
+                    <ul class="list-inline items d-flex justify-content-between">
+                      <li class="list-inline-item items-list">
+                        <p class="status_line py-1 px-2 rounded text-dark" data-status="order_placed" >Ordered</p>
+                      </li>
+                      <li class="list-inline-item items-list">
+                        <p class="status_line py-1 px-2 rounded text-dark" data-status="confirmed" >confirmation</p>
+                      </li>
+                      <li class="list-inline-item items-list">
+                        <p class="status_line py-1 px-2 rounded text-dark" data-status="prepared" >Preparation
+                        </p>
+                      </li>
+                      <li class="list-inline-item items-list">
+                        <p class="status_line py-1 px-2 rounded text-dark" data-status="delivered" >delivery
+                        </p>
+                      </li>
+                      <li class="list-inline-item items-list text-end" data-status="delivered"  style="margin-right: 8px;">
+                        <p class="status_line  py-1 px-2 rounded text-dark ">Complete</p>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+  
+              <p class="mt-4 pt-2 mb-0">Want any help? <a href="#!" style="color: #1eae22;">Please contact
+                  us</a></p>
             </div>
-            <ul>
-                <li class="status_line text-sm md:text-xl pb-16" data-status="order_placed"><span>Order Placed</span>
-                </li>
-                <li class="status_line text-sm md:text-xl pb-16" data-status="confirmed"><span>Order confirmation</span>
-                </li>
-                <li class="status_line text-sm md:text-xl pb-16" data-status="prepared"><span>Preparation</span></li>
-                <li class="status_line text-sm md:text-xl pb-16" data-status="delivered"><span>Out for delivery </span>
-                </li>
-                <li class="status_line text-sm md:text-xl" data-status="completed"><span>Complete</span></li>
-            </ul>
+          </div>
         </div>
+      </div>
     </div>
-</section>
+  </section>

@@ -1,9 +1,10 @@
 const User = require('../../models/user')
 const bcrypt = require('bcrypt')
 const passport = require('passport')
+
 function authController() {
     const _getRedirectUrl = (req) => {
-        return req.user.role === 'admin' ? '/admin/orders' : '/customer/orders'
+        return req.user.role === 'admin' ? '/adminHome' : '/'
     }
     
     return {
@@ -12,6 +13,7 @@ function authController() {
         },
         postLogin(req, res, next) {
             const { email, password } = req.body
+            //console.log(req.body)
            // Validate request 
             if(!email || !password) {
                 req.flash('error', 'All fields are required')

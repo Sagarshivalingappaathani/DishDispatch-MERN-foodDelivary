@@ -8,6 +8,39 @@ import { initAdmin } from './admin'
 import { searchBox } from './search';
 import moment from 'moment'
 
+/* =========== Show Navbar =========== */
+const navbar = document.querySelector(".navbar");
+const hamburger = document.querySelector(".hamburger");
+
+hamburger.addEventListener("click", () => {
+  navbar.classList.toggle("show");
+});
+
+/* =========== Scroll Position =========== */
+
+const header = document.querySelector(".header");
+const scrollLink = document.querySelectorAll(".navbar a:not(:last-child)");
+
+/* =========== Smooth Scroll =========== */
+Array.from(scrollLink).map((link) => {
+  link.addEventListener("click", (e) => {
+    // Prevent Default
+    e.preventDefault();
+
+    const id = e.currentTarget.getAttribute("href").slice(1);
+    const element = document.getElementById(id);
+    let position = element.offsetTop - 90;
+
+    window.scrollTo({
+      left: 0,
+      top: position,
+      behavior: "smooth",
+    });
+    navbar.classList.remove("show");
+  });
+});
+
+
 /* =========== Preloader =========== */
 const preloader = document.querySelector(".preloader");
 
@@ -30,8 +63,8 @@ if (!hasPreloaderShown) {
 let addToCart = document.querySelectorAll('.add-to-cart')
 let cartCounter = document.querySelector('#cartCounter')
 
-function updateCart(pizza) {
-   axios.post('/update-cart', pizza).then(res => {
+function updateCart(food) {
+   axios.post('/update-cart', food).then(res => {
        cartCounter.innerText = res.data.totalQty
        new Noty({
            type: 'success',
@@ -49,12 +82,53 @@ function updateCart(pizza) {
    })
 }
 
-addToCart.forEach((btn) => {
-   btn.addEventListener('click', (e) => {
-       let pizza = JSON.parse(btn.dataset.pizza)
-       updateCart(pizza)
-   })
-})
+
+addToCart.forEach((btn,index) => {
+    btn.addEventListener('click', (e) => {
+      let foodData = JSON.parse(btn.dataset.pizza);
+      const currentQuntity = document.getElementsByClassName('numberDisplay');
+      console.log(currentQuntity[index].textContent)
+      console.log(foodData);
+      const food={
+        foodDetails:foodData,
+        quantity:Number(currentQuntity[index].textContent),
+      }
+      // Now you can work with infoData here
+      updateCart(food);
+
+    });
+  });
+
+//increasing the number of the food item
+// Select all elements with class names
+const numberDisplay = document.querySelectorAll('.numberDisplay');
+const decreaseButton = document.querySelectorAll('.decreaseButton');
+const increaseButton = document.querySelectorAll('.increaseButton');
+
+// Initialize an array to keep track of quantities for each item
+const quantities = Array.from(numberDisplay).map(() => 1);
+
+decreaseButton.forEach((btn, index) => {
+  btn.addEventListener('click', () => {
+    if (quantities[index] > 1) {
+      quantities[index]--;
+      updateNumberDisplay(index);
+    }
+  });
+});
+
+increaseButton.forEach((btn, index) => {
+  btn.addEventListener('click', () => {
+    quantities[index]++;
+    updateNumberDisplay(index);
+  });
+});
+
+function updateNumberDisplay(index) {
+  numberDisplay[index].textContent = quantities[index];
+}
+
+
 
 // Remove alert message after X seconds
 const alertMsg = document.querySelector('#success-alert')
@@ -66,7 +140,6 @@ if(alertMsg) {
 
 
 const button = document.querySelectorAll('.removeButton');
-
 
 function deleteitem(pizza) {
     axios.delete('/delete-item', { data: pizza })
@@ -138,14 +211,36 @@ window.addEventListener('scroll', revealOnScroll);
 
 searchBox();
 
+//scroll button
+const scrollTop = document.querySelector(".scroll-top");
+
+scrollTop.addEventListener("click", () => {
+  window.scrollTo({
+    left: 0,
+    top: 0,
+    behavior: "smooth",
+  });
+});
+
+window.addEventListener("scroll", (e) => {
+  const scrollHeight = window.pageYOffset;
+
+  if (scrollHeight > 300) {
+    scrollTop.classList.add("show");
+  } else {
+    scrollTop.classList.remove("show");
+  }
+});
+
+
 
 
 // Change order status
+
 let statuses = document.querySelectorAll('.status_line')
 let hiddenInput = document.querySelector('#hiddenInput')
 let order = hiddenInput ? hiddenInput.value : null
 order = JSON.parse(order)
-let time = document.createElement('small')
 
 function updateStatus(order) {
    statuses.forEach((status) => {
@@ -160,8 +255,6 @@ function updateStatus(order) {
       }
       if(dataProp === order.status) {
            stepCompleted = false
-           time.innerText = moment(order.updatedAt).format('hh:mm A')
-           status.appendChild(time)
           if(status.nextElementSibling) {
            status.nextElementSibling.classList.add('current')
           }
@@ -169,6 +262,8 @@ function updateStatus(order) {
    })
 
 }
+
+
 
 updateStatus(order);
 
@@ -202,5 +297,5 @@ socket.on('orderUpdated', (data) => {
 
 
 
-
+ 
 

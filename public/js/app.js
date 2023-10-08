@@ -38,14 +38,15 @@ function initAdmin(socket) {
   function renderItems(items) {
     var parsedItems = Object.values(items);
     return parsedItems.map(function (menuItem) {
-      return "\n                <p>".concat(menuItem.item.name, " - ").concat(menuItem.qty, " pcs </p>\n            ");
+      return "\n                <p>".concat(menuItem.item.name, " - ").concat(menuItem.qty, " pcs</p>\n            ");
     }).join('');
   }
   function generateMarkup(orders) {
     return orders.map(function (order) {
-      return "\n                <tr>\n                <td class=\"border px-4 py-2 text-green-900\">\n                    <p>".concat(order._id, "</p>\n                    <div>").concat(renderItems(order.items), "</div>\n                </td>\n                <td class=\"border px-4 py-2\">").concat(order.customerId.name, "</td>\n                <td class=\"border px-4 py-2\">").concat(order.address, "</td>\n                <td class=\"border px-4 py-2\">\n                    <div class=\"inline-block relative w-64\">\n                        <form action=\"/admin/order/status\" method=\"POST\">\n                            <input type=\"hidden\" name=\"orderId\" value=\"").concat(order._id, "\">\n                            <select name=\"status\" onchange=\"this.form.submit()\"\n                                class=\"block appearance-none w-full bg-white border border-gray-400 hover:border-gray-500 px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline\">\n                                <option value=\"order_placed\"\n                                    ").concat(order.status === 'order_placed' ? 'selected' : '', ">\n                                    Placed</option>\n                                <option value=\"confirmed\" ").concat(order.status === 'confirmed' ? 'selected' : '', ">\n                                    Confirmed</option>\n                                <option value=\"prepared\" ").concat(order.status === 'prepared' ? 'selected' : '', ">\n                                    Prepared</option>\n                                <option value=\"delivered\" ").concat(order.status === 'delivered' ? 'selected' : '', ">\n                                    Delivered\n                                </option>\n                                <option value=\"completed\" ").concat(order.status === 'completed' ? 'selected' : '', ">\n                                    Completed\n                                </option>\n                            </select>\n                        </form>\n                        <div\n                            class=\"pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700\">\n                            <svg class=\"fill-current h-4 w-4\" xmlns=\"http://www.w3.org/2000/svg\"\n                                viewBox=\"0 0 20 20\">\n                                <path\n                                    d=\"M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z\" />\n                            </svg>\n                        </div>\n                    </div>\n                </td>\n                <td class=\"border px-4 py-2\">\n                    ").concat(moment__WEBPACK_IMPORTED_MODULE_0___default()(order.createdAt).format('hh:mm A'), "\n                </td>\n                <td class=\"border px-4 py-2\">\n                    ").concat(order.paymentStatus ? 'paid' : 'Not paid', "\n                </td>\n            </tr>\n        ");
+      return "\n            <div class=\"bg-white rounded-lg shadow-lg overflow-hidden max-w-3xl mx-auto mb-4\">\n            <div class=\"grid grid-cols-1 md:grid-cols-2 gap-4 p-4\">\n\n                <div class=\"col-span-1 md:col-span-1\">\n                    <p class=\"text-lg font-semibold text-green-600\">".concat(order._id, "</p>\n                    <strong>Items:</strong>\n                    <div>").concat(renderItems(order.items), "</div>\n                </div>\n                \n                <div class=\"col-span-1 md:col-span-1 mt-5\">\n                    <div><strong class=\"mr-2\">Name:</strong>").concat(order.customerId.name, "</div>\n                    <div><strong class=\"mr-2\">Adress:</strong>").concat(order.address, "</div>\n                    <div><strong class=\"mr-2\">Phone No:</strong>").concat(order.phone, "</div>\n                </div>\n        \n                <div class=\"col-span-1 md:col-span-1\">\n                    <div><strong class=\"mr-2\">totalPrice:</strong>\u20B9 ").concat(order.price, "</div>\n                    <div><strong>").concat(moment__WEBPACK_IMPORTED_MODULE_0___default()(order.createdAt).format('hh:mm A'), "</strong></div>\n                    <div class=\"").concat(order.paymentStatus ? 'text-green-600' : 'text-red-600', "\">").concat(order.paymentStatus ? 'Paid' : 'Not Paid', "</div>\n                </div>\n        \n                <div class=\"col-span-1 md:col-span-1\">\n                    <div class=\"relative\">\n                        <form action=\"/admin/order/status\" method=\"POST\">\n                            <input type=\"hidden\" name=\"orderId\" value=\"").concat(order._id, "\">\n                            <select name=\"status\" onchange=\"this.form.submit()\"\n                                class=\"block appearance-none w-full bg-white border border-gray-400 hover:border-gray-500 px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline\">\n                                <option value=\"order_placed\"\n                                    ").concat(order.status === 'order_placed' ? 'selected' : '', ">\n                                    Placed</option>\n                                <option value=\"confirmed\" ").concat(order.status === 'confirmed' ? 'selected' : '', ">\n                                    Confirmed</option>\n                                <option value=\"prepared\" ").concat(order.status === 'prepared' ? 'selected' : '', ">\n                                    Prepared</option>\n                                <option value=\"delivered\" ").concat(order.status === 'delivered' ? 'selected' : '', ">\n                                    Delivered\n                                </option>\n                                <option value=\"completed\" ").concat(order.status === 'completed' ? 'selected' : '', ">\n                                    Completed\n                                </option>\n                            </select>\n                        </form>\n                        <div\n                            class=\"pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700\">\n                            <svg class=\"fill-current h-4 w-4\" xmlns=\"http://www.w3.org/2000/svg\"\n                                viewBox=\"0 0 20 20\">\n                                <path\n                                    d=\"M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z\" />\n                            </svg>\n                        </div>\n                    </div>\n                </div>\n            </div>\n        </div>\n        \n        ");
     }).join('');
   }
+
   // Socket
   socket.on('orderPlaced', function (order) {
     new (noty__WEBPACK_IMPORTED_MODULE_1___default())({
@@ -92,6 +93,35 @@ console.log("SAP");
 
 
 
+/* =========== Show Navbar =========== */
+var navbar = document.querySelector(".navbar");
+var hamburger = document.querySelector(".hamburger");
+hamburger.addEventListener("click", function () {
+  navbar.classList.toggle("show");
+});
+
+/* =========== Scroll Position =========== */
+
+var header = document.querySelector(".header");
+var scrollLink = document.querySelectorAll(".navbar a:not(:last-child)");
+
+/* =========== Smooth Scroll =========== */
+Array.from(scrollLink).map(function (link) {
+  link.addEventListener("click", function (e) {
+    // Prevent Default
+    e.preventDefault();
+    var id = e.currentTarget.getAttribute("href").slice(1);
+    var element = document.getElementById(id);
+    var position = element.offsetTop - 90;
+    window.scrollTo({
+      left: 0,
+      top: position,
+      behavior: "smooth"
+    });
+    navbar.classList.remove("show");
+  });
+});
+
 /* =========== Preloader =========== */
 var preloader = document.querySelector(".preloader");
 var hasPreloaderShown = sessionStorage.getItem('preloaderShown');
@@ -108,8 +138,8 @@ if (!hasPreloaderShown) {
 }
 var addToCart = document.querySelectorAll('.add-to-cart');
 var cartCounter = document.querySelector('#cartCounter');
-function updateCart(pizza) {
-  axios__WEBPACK_IMPORTED_MODULE_4__["default"].post('/update-cart', pizza).then(function (res) {
+function updateCart(food) {
+  axios__WEBPACK_IMPORTED_MODULE_4__["default"].post('/update-cart', food).then(function (res) {
     cartCounter.innerText = res.data.totalQty;
     new (noty__WEBPACK_IMPORTED_MODULE_0___default())({
       type: 'success',
@@ -126,12 +156,48 @@ function updateCart(pizza) {
     }).show();
   });
 }
-addToCart.forEach(function (btn) {
+addToCart.forEach(function (btn, index) {
   btn.addEventListener('click', function (e) {
-    var pizza = JSON.parse(btn.dataset.pizza);
-    updateCart(pizza);
+    var foodData = JSON.parse(btn.dataset.pizza);
+    var currentQuntity = document.getElementsByClassName('numberDisplay');
+    console.log(currentQuntity[index].textContent);
+    console.log(foodData);
+    var food = {
+      foodDetails: foodData,
+      quantity: Number(currentQuntity[index].textContent)
+    };
+    // Now you can work with infoData here
+    updateCart(food);
   });
 });
+
+//increasing the number of the food item
+// Select all elements with class names
+var numberDisplay = document.querySelectorAll('.numberDisplay');
+var decreaseButton = document.querySelectorAll('.decreaseButton');
+var increaseButton = document.querySelectorAll('.increaseButton');
+
+// Initialize an array to keep track of quantities for each item
+var quantities = Array.from(numberDisplay).map(function () {
+  return 1;
+});
+decreaseButton.forEach(function (btn, index) {
+  btn.addEventListener('click', function () {
+    if (quantities[index] > 1) {
+      quantities[index]--;
+      updateNumberDisplay(index);
+    }
+  });
+});
+increaseButton.forEach(function (btn, index) {
+  btn.addEventListener('click', function () {
+    quantities[index]++;
+    updateNumberDisplay(index);
+  });
+});
+function updateNumberDisplay(index) {
+  numberDisplay[index].textContent = quantities[index];
+}
 
 // Remove alert message after X seconds
 var alertMsg = document.querySelector('#success-alert');
@@ -201,12 +267,30 @@ function revealOnScroll() {
 window.addEventListener('scroll', revealOnScroll);
 (0,_search__WEBPACK_IMPORTED_MODULE_2__.searchBox)();
 
+//scroll button
+var scrollTop = document.querySelector(".scroll-top");
+scrollTop.addEventListener("click", function () {
+  window.scrollTo({
+    left: 0,
+    top: 0,
+    behavior: "smooth"
+  });
+});
+window.addEventListener("scroll", function (e) {
+  var scrollHeight = window.pageYOffset;
+  if (scrollHeight > 300) {
+    scrollTop.classList.add("show");
+  } else {
+    scrollTop.classList.remove("show");
+  }
+});
+
 // Change order status
+
 var statuses = document.querySelectorAll('.status_line');
 var hiddenInput = document.querySelector('#hiddenInput');
 var order = hiddenInput ? hiddenInput.value : null;
 order = JSON.parse(order);
-var time = document.createElement('small');
 function updateStatus(order) {
   statuses.forEach(function (status) {
     status.classList.remove('step-completed');
@@ -220,8 +304,6 @@ function updateStatus(order) {
     }
     if (dataProp === order.status) {
       stepCompleted = false;
-      time.innerText = moment__WEBPACK_IMPORTED_MODULE_3___default()(order.updatedAt).format('hh:mm A');
-      status.appendChild(time);
       if (status.nextElementSibling) {
         status.nextElementSibling.classList.add('current');
       }

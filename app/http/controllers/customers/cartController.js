@@ -28,17 +28,17 @@ function cartController() {
             let cart = req.session.cart
 
             // Check if item does not exist in cart 
-            if(!cart.items[req.body._id]) {
-                cart.items[req.body._id] = {
-                    item: req.body,
-                    qty: 1
+            if(!cart.items[req.body.foodDetails._id]) {
+                cart.items[req.body.foodDetails._id] = {
+                    item: req.body.foodDetails,
+                    qty: req.body.quantity
                 }
-                cart.totalQty = cart.totalQty + 1
-                cart.totalPrice = cart.totalPrice + req.body.price
+                cart.totalQty = cart.totalQty + req.body.quantity
+                cart.totalPrice = cart.totalPrice + Math.floor(req.body.foodDetails.price*(1-(req.body.foodDetails.offer)/100) *req.body.quantity)
             } else {
-                cart.items[req.body._id].qty = cart.items[req.body._id].qty + 1
-                cart.totalQty = cart.totalQty + 1
-                cart.totalPrice =  cart.totalPrice + req.body.price
+                cart.items[req.body.foodDetails._id].qty = cart.items[req.body.foodDetails._id].qty + req.body.quantity
+                cart.totalQty = cart.totalQty + req.body.quantity
+                cart.totalPrice =  cart.totalPrice + Math.floor(req.body.foodDetails.price*(1-(req.body.foodDetails.offer)/100) *req.body.quantity)
             }
             return res.json({ totalQty: req.session.cart.totalQty })
         },
@@ -49,7 +49,7 @@ function cartController() {
         
             if (cart && cart.items && cart.items[pizzaId]) {
                 const deletedItem = cart.items[pizzaId];
-                const deletedItemPrice = deletedItem.item.price * deletedItem.qty;
+                const deletedItemPrice = Math.floor(deletedItem.item.price*(1-deletedItem.item.offer/100) * deletedItem.qty)
         
                 // Update the totalQty and totalPrice
                 cart.totalQty -= deletedItem.qty;
@@ -59,7 +59,7 @@ function cartController() {
                 delete cart.items[pizzaId];
             }
         
-            return res.json({ totalQty: req.session.cart.totalQty, totalPrice: req.session.cart.totalPrice });
+            return res.json({ totalQty: req.session.cart.totalQty, totalPrice: Math.floor(req.session.cart.totalPrice) });
         }
         
     }

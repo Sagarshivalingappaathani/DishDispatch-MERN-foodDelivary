@@ -23,7 +23,7 @@ export function initAdmin(socket) {
         let parsedItems = Object.values(items)
         return parsedItems.map((menuItem) => {
             return `
-                <p>${ menuItem.item.name } - ${ menuItem.qty } pcs </p>
+                <p>${ menuItem.item.name } - ${ menuItem.qty } pcs</p>
             `
         }).join('')
       }
@@ -31,15 +31,29 @@ export function initAdmin(socket) {
     function generateMarkup(orders) {
         return orders.map(order => {
             return `
-                <tr>
-                <td class="border px-4 py-2 text-green-900">
-                    <p>${ order._id }</p>
+            <div class="bg-white rounded-lg shadow-lg overflow-hidden max-w-3xl mx-auto mb-4">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 p-4">
+
+                <div class="col-span-1 md:col-span-1">
+                    <p class="text-lg font-semibold text-green-600">${ order._id }</p>
+                    <strong>Items:</strong>
                     <div>${ renderItems(order.items) }</div>
-                </td>
-                <td class="border px-4 py-2">${ order.customerId.name }</td>
-                <td class="border px-4 py-2">${ order.address }</td>
-                <td class="border px-4 py-2">
-                    <div class="inline-block relative w-64">
+                </div>
+                
+                <div class="col-span-1 md:col-span-1 mt-5">
+                    <div><strong class="mr-2">Name:</strong>${ order.customerId.name }</div>
+                    <div><strong class="mr-2">Adress:</strong>${ order.address }</div>
+                    <div><strong class="mr-2">Phone No:</strong>${ order.phone }</div>
+                </div>
+        
+                <div class="col-span-1 md:col-span-1">
+                    <div><strong class="mr-2">totalPrice:</strong>₹ ${ order.price}</div>
+                    <div><strong>${ moment(order.createdAt).format('hh:mm A') }</strong></div>
+                    <div class="${ order.paymentStatus ? 'text-green-600' : 'text-red-600' }">${ order.paymentStatus ? 'Paid' : 'Not Paid' }</div>
+                </div>
+        
+                <div class="col-span-1 md:col-span-1">
+                    <div class="relative">
                         <form action="/admin/order/status" method="POST">
                             <input type="hidden" name="orderId" value="${ order._id }">
                             <select name="status" onchange="this.form.submit()"
@@ -68,17 +82,14 @@ export function initAdmin(socket) {
                             </svg>
                         </div>
                     </div>
-                </td>
-                <td class="border px-4 py-2">
-                    ${ moment(order.createdAt).format('hh:mm A') }
-                </td>
-                <td class="border px-4 py-2">
-                    ${ order.paymentStatus ? 'paid' : 'Not paid' }
-                </td>
-            </tr>
+                </div>
+            </div>
+        </div>
+        
         `
         }).join('')
     }
+    
     // Socket
     socket.on('orderPlaced', (order) => {
         new Noty({
