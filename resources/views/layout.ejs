@@ -21,56 +21,7 @@
         <img src="/img/logo.png" alt="" />
     </div>
       <!-- Preloader -->
-    <!--
-    <nav class="container flex items-center justify-between py-4" style="width: 100%;">
-        <div>
-            <a href="/"><img src="/img/logo.png" alt="logo" style="width: 300px;"></a>
-        </div>
-        <div>
-            <ul class="flex items-center">
-                <div class="search-container">
-                    <input type="text" id="search" placeholder="Find Your Flavor..." autocomplete="off">
-                    <div id="results-frame" class="search-results-frame">
-                        <ul id="results" class="search-results"></ul>
-                    </div>
-                </div>
-                <li class="ml-6"><a href="/">Menu</a></li>
-                <% if(user) { %>
-                <li class="ml-6">
-                    <% if(user.role==='customer') { %>
-                    <li class="mr-6"><a href="/customer/orders">Orders</a></li>
-                    <% } else if (user.role === 'admin'){ %>
-                        <%} %>
-                        <form id="logout" action="/logout" method="POST">
-                            <a onclick="document.getElementById('logout').submit()" href="#">Logout</a>
-                        </form>
-                </li>
-                <% } else { %>
-                <li class="ml-6"><a href="/register">Register</a></li>
-                <li class="ml-6"><a href="/login">Login</a></li>
-                <% } %>
-                <li class="ml-6"><a href="/cart" class="inline-block px-2 py-1 rounded-full flex items-center">
-                        <span id="cartCounter"
-                            class="text-white font-bold pr-2"><%= session.cart ? session.cart.totalQty : '' %></span>
-                            <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            class="h-6 w-6 ml-2"
-                            fill="none"
-                            viewBox="0 0 24 24"
-                            stroke="currentColor"
-                          >
-                            <path
-                              stroke-linecap="round"
-                              stroke-linejoin="round"
-                              stroke-width="2"
-                              d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"
-                            />
-                          </svg>
-                    </a></li>
-            </ul>
-        </div>
-    </nav>
-    -->
+
     <header class="header mb-0" style="height: 85px;">
         <a href="/" class="ml-10"><img src="/img/logo.png" alt="logo" style="width: 300px;"></a>
         <nav class="navbar mr-10">
@@ -83,7 +34,7 @@
                             </div>
                         </div>
                     </li>
-                    <li><a href="/">Menu</a></li>
+                    <li><a href="/">Home</a></li>
                     <% if(user) { %>
                     <li>
                         <% if(user.role==='customer') { %>
