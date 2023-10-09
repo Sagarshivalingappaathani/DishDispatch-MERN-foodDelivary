@@ -1,192 +1,179 @@
-<div class="scrol">
- 
-  <section id="title"  style="height: 600px; display: flex; align-items: center;">
-    <div class="container mx-auto flex items-center justify-between">
-        <div class="w-1/2">
-            <h6 class="text-lg"><em>Are you hungry?</em></h6>
-            <h1 class="text-3xl md:text-6xl font-bold">Don't wait !</h1>
-            <button class="px-6 py-2 rounded-full text-white font-bold mt-4 btn-primary">Order Now</button>
+
+<div class="scrol mt-36">
+
+  <section class="h-screen bg-cover" style="background-image: url('./img/hero-pizza.png')">
+    <div class="flex h-full w-full items-center justify-center container mx-auto px-8">
+      <div class="max-w-2xl text-center">
+        <h1 class="text-3xl font-bold mb-2 sm:text-5xl capitalize tracking-widest text-white lg:text-7xl">DishDispatch</h1>
+  
+        <p class="mt-6 lg:text-lg font-bold text-white">Our chefs craft each dish with passion, using the finest ingredients to ensure every bite is a burst of flavor. No matter the occasion - a quiet night in, a family feast, or a special celebration - DishDispatch is here to make your meal memorable.</p>
+  
+        <div class="mt-8 flex flex-col space-y-3 sm:-mx-2 sm:flex-row sm:justify-center sm:space-y-0">
+          <div class="flex justify-between">
+            <button class="bg-green-500 hover:bg-green-600 text-white font-semibold py-2 px-4 rounded shadow-md focus:outline-none mr-10" role="button" onclick="scrollToMenuSection()">Menu</button>
+            <button class="bg-orange-500 hover:bg-orange-600 text-white font-semibold py-2 px-4 rounded shadow-md focus:outline-none" role="button"  onclick="window.location.href='/cart'">Order Now</button>
+          </div>      
         </div>
-        <div class="w-1/2">
-          <img src="/img/hero-pizza.png" alt="" class="rounded">
-      </div>        
-    </div>
-  </section>
-
-  <!--features section-->
-  <section class="services" id="services">
-    <div class="top text-3xl font-bold mb-2">
-      <h2><span class="green">Why</span> We are the Best</h2>
-      <p>
-        Delicious Dishes Delivered Fast: Your Food, Your Way, Right Away.
-      </p>
-    </div>
-    <div class="bottom">
-      <div class="box">
-        <img src="./img/delivery-man.svg" alt="" />
-        <h4 class="green text-3xl font-bold mb-2">Free Delivery</h4>
-        <h2 class="font-bold mb-2">
-          Enjoy Free Delivery: Savor Your Favorites, Zero Delivery Charges!
-        </h2>
-      </div>
-      <div class="box">
-        <img src="./img/fast-food.svg" alt="" />
-        <h4 class="green text-3xl font-bold mb-2">Healthy Foods</h4>
-        <h2 class="font-bold mb-2">
-          Eat Well, Feel Well: Discover Our Nutrient-Packed, Healthy Food Options.
-        </h2>
       </div>
     </div>
   </section>
-
-<!--menu section-->  
-  <section class="menu container mx-auto py-8" style="margin-top: 100px">
-    <h1 class="text-3xl font-semibold text-center mb-8 text-dark-600">Delicious Eats: Explore Our Menu</h1>
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 col-gap-12 row-gap-10">
-        <% pizzas.forEach(function(pizza) { %>
-            <div class="w-full md:w-64 pizza-card">
-                <img class="h-40 mt-4 mx-auto transition-transform duration-300 transform scale-100 hover:scale-110" src="/img/<%= pizza.image %>" alt="">
-                <div class="text-center p-4 rounded-lg border border-gray-300">
-                    <h2 class="mb-1 text-lg"><%= pizza.name %></h2>
-                    <div>
-                      <span class="fa fa-star" style="color: orange;"></span>
-                      <span class="fa fa-star" style="color: orange;"></span>
-                      <span class="fa fa-star" style="color: orange;"></span>
-                      <span class="fa fa-star" style="color: orange;"></span>
-                      <span class="fa fa-star" ></span>
-                    </div>
-                    <div class="mb-1">
-                      <span class="size py-1 px-4 font-bold rounded-full text-xs bg-white-500 text-orange-700"><%=pizza.offer %>% OFF</span>
-                    </div>                  
-                    <div>
-                      <button class="bg-green-500 rounded-l border text-white hover:bg-green-600 active:bg-green-700 disabled:opacity-50 inline-flex items-center px-2 py-1 border-r border-green-600 decreaseButton">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 12H4" />
-                        </svg>
-                      </button>
-                      <div class="bg-gray-100 border-t border-b border-gray-100 text-gray-600 hover:bg-gray-100 inline-flex items-center px-3 py-1 select-none numberDisplay">
-                        1
+  
+  
+    <!--features section-->
+    <section class="services" id="services">
+      <div class="top text-3xl font-bold mb-2">
+        <h2><span class="green">Why</span> We are the Best</h2>
+        <p>
+          Delicious Dishes Delivered Fast: Your Food, Your Way, Right Away.
+        </p>
+      </div>
+      <div class="bottom">
+        <div class="box">
+          <img src="./img/delivery-man.svg" alt="" />
+          <h4 class="green text-3xl font-bold mb-2">Free Delivery</h4>
+          <h2 class="font-bold mb-2">
+            Enjoy Free Delivery: Savor Your Favorites, Zero Delivery Charges!
+          </h2>
+        </div>
+        <div class="box">
+          <img src="./img/fast-food.svg" alt="" />
+          <h4 class="green text-3xl font-bold mb-2">Healthy Foods</h4>
+          <h2 class="font-bold mb-2">
+            Eat Well, Feel Well: Discover Our Nutrient-Packed, Healthy Food Options.
+          </h2>
+        </div>
+      </div>
+    </section>
+  
+  <!--menu section-->  
+    <section class="menu container mx-auto py-8" id="menu-section">
+      <h1 class="text-4xl font-semibold text-center mb-8 text-dark-600">Delicious Eats: Explore Our Menu</h1>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 col-gap-12 row-gap-10">
+          <% pizzas.forEach(function(pizza) { %>
+              <div class="w-full md:w-64 pizza-card">
+                  <img class="h-40 mt-4 mx-auto transition-transform duration-300 transform scale-100 hover:scale-110" src="/img/<%= pizza.image %>" alt="">
+                  <div class="text-center p-4 rounded-lg border border-gray-300">
+                      <h2 class="mb-1 text-lg"><%= pizza.name %></h2>
+                      <div>
+                        <span class="fa fa-star" style="color: orange;"></span>
+                        <span class="fa fa-star" style="color: orange;"></span>
+                        <span class="fa fa-star" style="color: orange;"></span>
+                        <span class="fa fa-star" style="color: orange;"></span>
+                        <span class="fa fa-star" ></span>
                       </div>
-                      <button class="bg-green-500 rounded-r border text-white hover:bg-green-600 active:bg-green-700 disabled:opacity-50 inline-flex items-center px-2 py-1 border-r border-green-600 increaseButton">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4" />
-                        </svg>
-                      </button>
-                    </div>
-                    <div class="flex items-center justify-around mt-2">
-                        <span class="font-bold text-lg">₹<%= pizza.price %></span>
-                        <button data-pizza="<%= JSON.stringify(pizza) %>"
-                          class="add-to-cart py-1 px-2 rounded-full flex items-center font-bold">
-                          add to cart
-                          <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            class="h-6 w-6 ml-2"
-                            fill="none"
-                            viewBox="0 0 24 24"
-                            stroke="currentColor"
-                          >
-                            <path
-                              stroke-linecap="round"
-                              stroke-linejoin="round"
-                              stroke-width="2"
-                              d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"
-                            />
+                      <div class="mb-1">
+                        <span class="size py-1 px-4 font-bold rounded-full text-xs bg-white-500 text-orange-700"><%=pizza.offer %>% OFF</span>
+                      </div>                  
+                      <div>
+                        <button class="bg-green-500 rounded-l border text-white hover:bg-green-600 active:bg-green-700 disabled:opacity-50 inline-flex items-center px-2 py-1 border-r border-green-600 decreaseButton">
+                          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 12H4" />
                           </svg>
                         </button>
-                    </div>
-                </div>
-            </div>      
-        <% }) %>
-    </div>
-  </section>
-<!--
-  <section>
-    <div class="testimonial-container">
-      <div class="testimonial-section">
-          <h2>Testimonial 1</h2>
-          <p>
-              "I love the convenience of Get it->Cook it. The quality of the raw food items is always top-notch, and the delivery is fast and reliable."
-          </p>
-          <footer>
-              <div>
-                  <img src="https://storage.googleapis.com/mixo-files/public/img/avatars/male-4.png" class="w-10 h-10 mx-auto border-2 border-slate-200 rounded-full shadow-sm object-cover" alt="Testimonial">
-              </div>
-              <div class="mt-3 text-center md:mt-0 md:ml-3 md:flex md:items-center text-shadow-sm">
-                  <div class="text-lg font-medium text-white">Mike Rivera</div>
-              </div>
-          </footer>
+                        <div class="bg-gray-100 border-t border-b border-gray-100 text-gray-600 hover:bg-gray-100 inline-flex items-center px-3 py-1 select-none numberDisplay">
+                          1
+                        </div>
+                        <button class="bg-green-500 rounded-r border text-white hover:bg-green-600 active:bg-green-700 disabled:opacity-50 inline-flex items-center px-2 py-1 border-r border-green-600 increaseButton">
+                          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4" />
+                          </svg>
+                        </button>
+                      </div>
+                      <div class="flex items-center justify-around mt-2">
+                          <span class="font-bold text-lg">₹<%= pizza.price %></span>
+                          <button data-pizza="<%= JSON.stringify(pizza) %>"
+                            class="add-to-cart py-1 px-2 rounded-full flex items-center font-bold">
+                            add to cart
+                            <svg
+                              xmlns="http://www.w3.org/2000/svg"
+                              class="h-6 w-6 ml-2"
+                              fill="none"
+                              viewBox="0 0 24 24"
+                              stroke="currentColor"
+                            >
+                              <path
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                                stroke-width="2"
+                                d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"
+                              />
+                            </svg>
+                          </button>
+                      </div>
+                  </div>
+              </div>      
+          <% }) %>
       </div>
-      <div class="testimonial-section">
-         
-          <h2>Testimonial 2</h2>
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-      </div>
-      <div class="testimonial-section">
-         
-          <h2>Testimonial 3</h2>
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-      </div>
+    </section>
+  
   </div>
-  </section>-->
-
-</div>
-
-<footer class="footer">
-  <div class="top">
-    <div class="content">
-      <div>
-        <a href="/"><img src="/img/logo.png" alt="logo" style="width: 300px;"></a>
-      </div>
-      <p>
-        Delicious Dishes Delivered Fast: Your Food, Your Way, Right Away.
-      </p>
-    </div>
-
-    <div class="links">
-      <div class="link">
-        <h4>Contact Information</h4>
+  
+  <footer class="footer">
+    <div class="top">
+      <div class="content">
         <div>
-          <img src="./img/location-cross.svg" alt="" />
-          <span>Shri Kareshiddeswar Prasanna</span>
+          <a href="/"><img src="/img/logo.png" alt="logo" style="width: 300px;"></a>
         </div>
-        <div>
-          <img src="./img/sms-tracking.svg" alt="" />
-          <span>dishDispatch@gmail.com</span>
-        </div>
+        <p>
+          Delicious Dishes Delivered Fast: Your Food, Your Way, Right Away.
+        </p>
       </div>
-
-      <div class="link">
-        <h4>Quick Links</h4>
-        <a href="#">Services</a>
-        <a href="#">About Us</a>
-        <a href="#">Contact Us</a>
-        <a href="#">Download</a>
-      </div>
-
-      <div class="link">
-        <h4>Legal</h4>
-        <a href="#">Privacy Policy</a>
-        <a href="#">Term of Use</a>
-        <a href="#">Conditions</a>
-        <a href="#">Location</a>
-      </div>
-
-      <div class="link">
-        <h4>Connect with Us</h4>
-        <div>
-          <img src="./img/instagram.svg" alt="" />
-          <span>Instagram</span>
+  
+      <div class="links">
+        <div class="link">
+          <h4>Contact Information</h4>
+          <div>
+            <img src="./img/location-cross.svg" alt="" />
+            <span>Shri Kareshiddeswar Prasanna</span>
+          </div>
+          <div>
+            <img src="./img/sms-tracking.svg" alt="" />
+            <span>dishDispatch@gmail.com</span>
+          </div>
         </div>
-        <div>
-          <img src="./img/twitter.svg" alt="" />
-          <span>Twitter</span>
+  
+        <div class="link">
+          <h4>Quick Links</h4>
+          <a href="#">Services</a>
+          <a href="#">About Us</a>
+          <a href="#">Contact Us</a>
+          <a href="#">Download</a>
         </div>
-        <div>
-          <img src="./img/facebook.svg" alt="" />
-          <span>Facebook</span>
+  
+        <div class="link">
+          <h4>Legal</h4>
+          <a href="#">Privacy Policy</a>
+          <a href="#">Term of Use</a>
+          <a href="#">Conditions</a>
+          <a href="#">Location</a>
+        </div>
+  
+        <div class="link">
+          <h4>Connect with Us</h4>
+          <div>
+            <img src="./img/instagram.svg" alt="" />
+            <span>Instagram</span>
+          </div>
+          <div>
+            <img src="./img/twitter.svg" alt="" />
+            <span>Twitter</span>
+          </div>
+          <div>
+            <img src="./img/facebook.svg" alt="" />
+            <span>Facebook</span>
+          </div>
         </div>
       </div>
     </div>
-  </div>
-</footer>
-
+  </footer>
+  <script>
+    function scrollToMenuSection() {
+      // Get a reference to the menu section by its id
+      var menuSection = document.getElementById("menu-section");
+  
+      // Use the scrollIntoView method to scroll to the menu section
+      menuSection.scrollIntoView({ behavior: "smooth" }); // Smooth scrolling
+    }
+  </script>
+  
+  
