@@ -1,4 +1,5 @@
-# DishDispatch
+<img src="https://github.com/Sagarshivalingappaathani/DishDispatch-MERN-foodDelivary-Project5/assets/121311033/6d6e4e6c-cfe7-46b9-b0df-9697d7733a5d" alt="logo" width="200" style="border: 3px solid #000; border-radius: 10px; box-shadow: 5px 5px 10px #888; margin:20px">
+
 - [See the live demo video(User) →](https://drive.google.com/file/d/1j8HxwiOM9Wmx7Jt1SZ9zlFi1eAXPd8XU/view?usp=sharing)
 - [See the live demo video(admin) →](https://drive.google.com/file/d/1Pmnesjti2eK9yWMx_BarJm1nHGw3edsW/view?usp=sharing)
 
