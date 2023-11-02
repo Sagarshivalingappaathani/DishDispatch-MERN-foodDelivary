@@ -2,7 +2,8 @@
 
 - "DishDispatch" is a food delivery project built using the MERN (MongoDB, Express, React, Node.js) stack.
 - This platform aims to simplify the process of ordering and delivering food. Customers can browse a variety of dishes from menu, place 
-  their orders, and have their favorite meals delivered to their doorstep. 
+  their orders, and have their favorite meals delivered to their doorstep they can track their orders and they can see theor history as 
+  well. 
 - On the other hand, Admin of DishDispatch to expand their reach and efficiently manage food orders. This project leverages modern web 
   technologies to create a seamless food delivery experience for both customers and owners.
 - [See the live demo video(User) →](https://drive.google.com/file/d/1j8HxwiOM9Wmx7Jt1SZ9zlFi1eAXPd8XU/view?usp=sharing)
